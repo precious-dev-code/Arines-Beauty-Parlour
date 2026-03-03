@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arines Beauty Parlour | Johannesburg</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dark: #8B6914;
+  --black: #0A0A0A;
+  --black-soft: #111111;
+  --black-card: #161616;
+  --white: #F9F5EE;
+  --white-soft: #E8E0D0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.gold-text {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold), var(--gold-light), var(--gold-dark));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: 15px 0;
+}
+
+.navbar-brand img { height: 80px; width: auto; }
+
+.nav-link {
+  color: var(--white-soft) !important;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 10px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: 0.3s;
+}
+
+.nav-link:hover { color: var(--gold) !important; }
+.nav-link:hover::after { width: 100%; }
+
+.book-btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: var(--black) !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  padding: 10px 25px !important;
+  border-radius: 0 !important;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+.book-btn:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  transform: scale(1.05);
+}
+
+.book-btn::after { display: none !important; }
+
+#hero {
+  min-height: 100vh;
+  background: 
+    linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.6) 50%, rgba(139,105,20,0.3) 100%),
+    url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 90px;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--white);
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-subtitle {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white-soft);
+  opacity: 0.7;
+  margin: 25px 0 40px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px 0;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  clip-path: polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%);
+  transition: 0.3s;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.btn-gold:hover {
+  color: var(--black);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(201,168,76,0.3);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 15px 35px;
+  border: 1px solid var(--gold);
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+  margin-left: 15px;
+  animation: fadeUp 0.8s ease 0.7s both;
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-3px);
+}
+
+.hero-logo {
+  animation: float 4s ease-in-out infinite, fadeIn 1s ease 0.5s both;
+}
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto 60px;
+  max-width: 300px;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.gold-divider::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.gold-diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+section { padding: 100px 0; }
+
+.section-tag {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.service-card {
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 40px 30px;
+  text-align: center;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: 0.4s;
+}
+
+.service-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.05);
+}
+
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.service-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.service-card p {
+  font-size: 12px;
+  color: var(--white-soft);
+  opacity: 0.6;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.price-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 6px 18px;
+  text-transform: uppercase;
+}
+
+.pricing-section { background: var(--black-soft); }
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  transition: 0.3s;
+}
+
+.price-item:hover { padding-left: 10px; }
+.price-item:hover .price-name { color: var(--gold); }
+
+.price-name {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--white-soft);
+  transition: 0.3s;
+}
+
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.booking-section {
+  background: 
+    linear-gradient(135deg, rgba(10,10,10,0.97), rgba(10,10,10,0.85)),
+    url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920') center/cover no-repeat;
+  text-align: center;
+  position: relative;
+}
+
+.booking-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+}
+
+.contact-section { background: var(--black-soft); }
+
+.contact-card {
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 40px;
+  text-align: center;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.contact-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-5px);
+}
+
+.contact-icon { font-size: 30px; margin-bottom: 15px; display: block; }
+
+.contact-card h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.contact-card p {
+  font-size: 13px;
+  color: var(--white-soft);
+  opacity: 0.7;
+  line-height: 1.8;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  z-index: 999;
+  width: 60px; height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.floating-whatsapp:hover { transform: scale(1.1); }
+.floating-whatsapp img { width: 30px; }
+
+.hours-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 8px 20px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+footer {
+  background: #050505;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--white-soft);
+  opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 48px; }
+  .btn-outline-gold { margin-left: 0; margin-top: 15px; display: block; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://res.cloudinary.com/dzpgam7ok/image/upload/v1772536857/IMG-20260303-WA0312_dhqq41.jpg" alt="Arines Beauty Parlour">
+    </a>
+    <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span style="color:var(--gold); font-size:20px;">☰</span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-2">
+          <a class="nav-link book-btn" href="https://wa.me/27619397527?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20at%20Arines%20Beauty%20Parlour!">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="hero-tag">✦ Johannesburg, South Africa ✦</p>
+        <h1 class="hero-title">
+          Arines<br>
+          <span class="gold-text">Beauty</span><br>
+          <span style="font-style:italic; font-weight:300;">Parlour</span>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">Hair · Makeup · Lashes · Nails · Wigs</p>
+        <div>
+          <a href="https://wa.me/27619397527?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20at%20Arines%20Beauty%20Parlour!" class="btn-gold">Book Appointment</a>
+          <a href="#services" class="btn-outline-gold">Our Services</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center d-none d-lg-block">
+        <img src="https://res.cloudinary.com/dzpgam7ok/image/upload/v1772536857/IMG-20260303-WA0312_dhqq41.jpg"
+        class="hero-logo img-fluid"
+        style="max-width:500px; filter: drop-shadow(0 0 40px rgba(201,168,76,0.3));"
+        alt="Arines Beauty Parlour">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="container text-center">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title mb-3">Our <em>Services</em></h2>
+    <div class="gold-divider"><div class="gold-diamond"></div></div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-card">
+          <span class="service-icon">💇‍♀️</span>
+          <h4>Hair Styling</h4>
+          <p>Expert braiding, bonding and crochet styles crafted to perfection for every occasion.</p>
+          <span class="price-tag">From R120</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <span class="service-icon">💄</span>
+          <h4>Makeup</h4>
+          <p>Flawless makeup application for every occasion — from natural glam to full beat.</p>
+          <span class="price-tag">From R200</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <span class="service-icon">👁️</span>
+          <h4>Lashes</h4>
+          <p>Beautiful lash extensions and application to make your eyes pop and dazzle.</p>
+          <span class="price-tag">From R150</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <span class="service-icon">💅</span>
+          <h4>Nails</h4>
+          <p>Stunning nail designs and professional nail care to complete your look.</p>
+          <span class="price-tag">From R200</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <span class="service-icon">👑</span>
+          <h4>Wig Installation</h4>
+          <p>Professional wig installation for a natural flawless look every single time.</p>
+          <span class="price-tag">From R200</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <span class="service-icon">✂️</span>
+          <h4>Wig Making</h4>
+          <p>Custom wigs made to your exact specifications — your dream hair brought to life.</p>
+          <span class="price-tag">From R200</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-tag">Investment</span>
+      <h2 class="section-title">Our <em>Pricing</em></h2>
+      <div class="gold-divider"><div class="gold-diamond"></div></div>
+    </div>
+    <div class="row g-5">
+      <div class="col-md-6">
+        <h5 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold-light); letter-spacing:2px; margin-bottom:30px;">✦ Hair Services</h5>
+        <div class="price-item">
+          <span class="price-name">Braids — Any Style</span>
+          <span class="price-amount">R150+</span>
+        </div>
+        <div class="price-item">
+          <span class="price-name">Bonding</span>
+          <span class="price-amount">R120+</span>
+        </div>
+        <div class="price-item">
+          <span class="price-name">Crochet</span>
+          <span class="price-amount">R150+</span>
+        </div>
+        <div class="price-item">
+          <span class="price-name">Wig Installation</span>
+          <span class="price-amount">R200+</span>
+        </div>
+        <div class="price-item">
+          <span class="price-name">Wig Making</span>
+          <span class="price-amount">R200+</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold-light); letter-spacing:2px; margin-bottom:30px;">✦ Beauty Services</h5>
+        <div class="price-item">
+          <span class="price-name">Makeup Application</span>
+          <span class="price-amount">R200+</span>
+        </div>
+        <div class="price-item">
+          <span class="price-name">Lash Application</span>
+          <span class="price-amount">R150+</span>
+        </div>
+        <div class="price-item">
+          <span class="price-name">Nail Art & Design</span>
+          <span class="price-amount">R200+</span>
+        </div>
+        <div class="price-item" style="border:none;">
+          <span class="price-name" style="font-style:italic; opacity:0.5; font-size:12px;">Prices vary by complexity and style</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking-section">
+  <div class="container text-center position-relative">
+    <span class="section-tag">Ready to Glow?</span>
+    <h2 class="section-title mb-4">Book Your <em>Appointment</em></h2>
+    <div class="gold-divider"><div class="gold-diamond"></div></div>
+    <div class="hours-badge">
+      <span>⏰</span> Mon — Sat &nbsp;|&nbsp; 08:00 — 21:00 &nbsp;|&nbsp; Walk-ins Welcome
+    </div>
+    <br>
+    <a href="https://wa.me/27619397527?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20at%20Arines%20Beauty%20Parlour!" 
+    class="btn-gold" style="font-size:12px; padding:18px 50px;">
+      Book on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Find <em>Us</em></h2>
+      <div class="gold-divider"><div class="gold-diamond"></div></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="contact-card">
+          <span class="contact-icon">📍</span>
+          <h5>Location</h5>
+          <p>Ormonde View Estates<br>Johannesburg, South Africa</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card">
+          <span class="contact-icon">📱</span>
+          <h5>Call or WhatsApp</h5>
+          <p>
+            <a href="tel:0619397527" style="color:var(--gold); text-decoration:none;">0619397527</a><br>
+            <small style="opacity:0.5;">Calls & WhatsApp welcome</small>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card">
+          <span class="contact-icon">🕐</span>
+          <h5>Working Hours</h5>
+          <p>Monday — Saturday<br>08:00 AM — 09:00 PM<br><small style="color:var(--gold);">Closed Sundays</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/27619397527?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20at%20Arines%20Beauty%20Parlour!" target="_blank" class="floating-whatsapp">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
+
+<footer>
+  <div class="container">
+    <img src="https://res.cloudinary.com/dzpgam7ok/image/upload/v1772536857/IMG-20260303-WA0312_dhqq41.jpg" 
+    style="height:50px; margin-bottom:20px; filter: drop-shadow(0 0 10px rgba(201,168,76,0.3));" alt="Arines">
+    <p>&copy; 2026 ARINES BEAUTY PARLOUR &nbsp;·&nbsp; JOHANNESBURG, SOUTH AFRICA</p>
+    <p style="margin-top:8px; color:var(--gold); opacity:0.4;">Website by Precious VA Services</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
